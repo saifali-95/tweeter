@@ -7,9 +7,9 @@
   justify-content: center;
   background-color: #00e0bb;
   background-image: url("https://www.transparenttextures.com/patterns/old-mathematics.png");
-/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
   position : absolute;
   top: 120px;
+  z-index: -1;
 }
 
 .image {

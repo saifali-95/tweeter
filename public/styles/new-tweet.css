@@ -26,7 +26,13 @@
   display: flex;
   justify-content: space-between;
   font-family: "Bungee";
+  
 
+}
+
+.click:hover {     
+  background-color: black;   
+  color: white; 
 }
 
 .click {
