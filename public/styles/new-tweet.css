@@ -1,0 +1,38 @@
+.new-tweet {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+}
+
+#tweet-text {
+  background-color:inherit;
+  border-style: none;
+  border-bottom: 3px solid #000000;
+  font-size: 20px;
+  font-style: italic;
+  width: 500px;
+  height: 50px;
+
+}
+
+.button {
+  display: flex;
+  justify-content: space-between;
+  font-family: "Bungee";
+
+}
+
+.click {
+  background-color: rgba(64, 224, 197, 0.808);
+  color: rgb(77, 74, 74);
+}
+
+.counter {
+  color: rgb(77, 74, 74);
+}
