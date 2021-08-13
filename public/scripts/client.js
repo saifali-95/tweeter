@@ -5,50 +5,52 @@
  */
 
 // Test / driver code (temporary). Eventually will get this from the server.
-const data = [
-  {
-    "user": {
-      "name": "Newton",
-      "avatars": "https://i.imgur.com/73hZDYK.png"
-      ,
-      "handle": "@SirIsaac"
-    },
-    "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-    "created_at": 1461116232227
-  },
-  {
-    "user": {
-      "name": "Descartes",
-      "avatars": "https://i.imgur.com/nlhLi3I.png",
-      "handle": "@rd" },
-    "content": {
-      "text": "Je pense , donc je suis"
-    },
-    "created_at": 1461113959088
-  }
-]
 
 $(document).ready(function() {
-  renderTweets(data);
 
   $("form").submit(function(event) {
     event.preventDefault();
-    const data = $(this).serialize(); 
-    const text = $('#tweet-text').val();
-    // if length > 140
-    // empty do not submit
-    // text.length
-  
+    const data = $(this).serialize();
+    const textLength = $('#tweet-text').val().length;
+    
+    if (textLength === 0) {
+      alert('Empty Text');
+      return;
+    }
+
+    if (textLength > 140) {
+      alert('Too Many words');
+      return;
+    }
+    
     $.ajax('/tweets', { method: "POST" , data})
-    .then()
-    .catch(console.log(error))
+    .then(function () {
+      $loadTweets();
+    })
+    .catch(error => {
+      console.log('error......',error)
+    })
   });
-  
+
+  const $loadTweets = function() {
+    //alert("loading tweets");
+    $.ajax('/tweets', { method: 'GET' })
+      .then(function (tweetData) {
+      $('.posted-tweet').html('');
+      renderTweets(tweetData.reverse()); 
+    });
+  }
+
+  $loadTweets();
 
 });
 
+
+const escape = function (str) {
+  let div = document.createElement("div");
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+};
 
 
 const createTweetElement = function(tweetData) {
@@ -62,7 +64,7 @@ const createTweetElement = function(tweetData) {
   <h2 class = "account">${tweetData['user']['handle']}</h2>
   </header>
   <div class="text">
-  ${tweetData['content']['text']}
+  ${escape(tweetData['content']['text'])}
   </div>
   <footer>
     <h6>${timeago.format(tweetData['created_at'])}</h6>

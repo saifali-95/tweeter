@@ -16,7 +16,7 @@
 
 }
 
-.posted-tweet:hover {
+.posted-tweet article:hover {
   box-shadow: 10px 10px 5px rgba(64, 224, 197, 0.808);
 }
 
