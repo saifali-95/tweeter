@@ -54,7 +54,13 @@
     <!-- Page-specific (main) content here -->
     <main>
       <section class="new-tweet">
-        <h2>Compose Tweet</h2>
+        <div class="new-tweet-header">
+          <div>
+            <h2>Compose Tweet</h2>
+          </div>
+            <div class="error">
+            </div>  
+        </div>
           <div class="text">
             <form action="/tweets" method="POST">
             <label for="tweet-text">What are you humming about?</label>

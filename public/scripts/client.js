@@ -5,27 +5,59 @@
  */
 
 // Test / driver code (temporary). Eventually will get this from the server.
+const $errorHTML = `
+<div class="delete">
+<div class="error">
+<h2>Too Long, text limit exceeded 140 characters </h2>
+</div>
+</div>
+`
+const $shortError = `
+<div class="delete">
+<div class="error">
+<h2>Please type something</h2>
+</div>
+</div>
+`
+
+
+
 
 $(document).ready(function() {
+  $('.error').hide();
+  const $errorMessage = $('.error h2')
 
   $("form").submit(function(event) {
+    $('.delete').html('');
+    $('.error').hide();
     event.preventDefault();
     const data = $(this).serialize();
     const textLength = $('#tweet-text').val().length;
-    
+    $errorContainer = $('.error')
+
     if (textLength === 0) {
-      alert('Empty Text');
+      $errorContainer.text('hsdhskdhaskjhdkjs');
+     // $('.new-tweet-header').append($shortError);
+      $('.error').slideDown('slow'); 
+      
+      // $('.new-tweet-header').slideDown( "slow", function() {
+      //   // Animation complete.
+        
+      // });
       return;
     }
 
     if (textLength > 140) {
-      alert('Too Many words');
+      $errorContainer.text('Please type less than 140 character');
+      $('.error').slideDown('slow'); 
+     // $('.new-tweet-header').append($errorHTML);
       return;
     }
     
     $.ajax('/tweets', { method: "POST" , data})
     .then(function () {
       $loadTweets();
+      $('.delete').html('');
     })
     .catch(error => {
       console.log('error......',error)

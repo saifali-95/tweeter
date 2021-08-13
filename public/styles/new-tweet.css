@@ -6,6 +6,22 @@
 
 }
 
+.new-tweet-header {
+  display: flex;
+}
+
+.error {
+  display: flex;
+  margin-left: 10%;
+  margin-right: 30%;
+  background-color: cornsilk;
+  color: red;
+  border-style: dashed; 
+  font-weight: bold;
+  font-size: 44px;
+  padding : 5px 80px; 
+}
+
 .text {
   display: flex;
   flex-direction: column;
