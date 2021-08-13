@@ -1,0 +1,81 @@
+.write {
+  margin-right : 10px;
+}
+
+.posted-tweet article {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 20px;
+  background-color: rgb(184, 181, 181);
+  border-style: solid;
+  height: 100%;
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+
+}
+
+.posted-tweet:hover {
+  box-shadow: 10px 10px 5px rgba(64, 224, 197, 0.808);
+}
+
+.posted-tweet{
+  margin-right: 0px;
+}
+
+.posted-tweet article header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.profile {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+
+.posted-tweet article header img {
+  display: flex;
+  border: none;
+  border-radius: 4px;
+  width: 25%;
+  height: 25%;
+  padding-right: 10px;
+}
+
+.posted-tweet .text {
+  display: flex;
+  padding: 30px;
+  border-style: none;
+  background-color: rgb(184, 181, 181);
+  border-bottom: 2px solid rgb(77, 74, 74);
+}
+
+.posted-tweet article footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.icons {
+  width: 100px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+
+}
+.icons .fas {
+  color: black;
+}
+
+.icons .fas:hover {
+  cursor: pointer;
+  color: rgba(64, 224, 197, 0.808)   
+}
+
+.account {
+  color: rgb(156, 154, 154);
+}
+
