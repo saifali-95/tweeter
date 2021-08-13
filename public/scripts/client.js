@@ -30,6 +30,27 @@ const data = [
   }
 ]
 
+$(document).ready(function() {
+  renderTweets(data);
+
+  $("form").submit(function(event) {
+    event.preventDefault();
+    const data = $(this).serialize(); 
+    const text = $('#tweet-text').val();
+    // if length > 140
+    // empty do not submit
+    // text.length
+  
+    $.ajax('/tweets', { method: "POST" , data})
+    .then()
+    .catch(console.log(error))
+  });
+  
+
+});
+
+
+
 const createTweetElement = function(tweetData) {
   const $outputTweet = `
   <article>
@@ -62,11 +83,7 @@ const renderTweets = function(tweets) {
   // takes return value and appends it to the tweets container
   for (const item of tweets) { 
     const $tweet = createTweetElement(item);
-   
-    $( document ).ready(function() {
+      //prepend
       $('.posted-tweet').append($tweet); // to add it to the page so we can make sure it's got all the right elements, classes, etc.
-    });
   }
 }
-
-renderTweets(data);
