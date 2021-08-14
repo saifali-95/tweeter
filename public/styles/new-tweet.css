@@ -13,12 +13,12 @@
 .error {
   display: flex;
   margin-left: 10%;
-  margin-right: 30%;
+  margin-right: 10%;
   background-color: cornsilk;
   color: red;
-  border-style: dashed; 
+  border-style: solid; 
   font-weight: bold;
-  font-size: 44px;
+  font-size: 24px;
   padding : 5px 80px; 
 }
 
