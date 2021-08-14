@@ -1,7 +1,8 @@
 .nav {
   height: 120px;
   width: 100%;
-  background-color: black;
+  background-color: #00e0bb;
+  background-image: url("https://www.transparenttextures.com/patterns/old-mathematics.png");
   color: white;
   font-family: 'Bungee'; 
   display: flex;
