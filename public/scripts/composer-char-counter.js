@@ -2,7 +2,6 @@ $(document).ready(function() {
   // --- our code goes here ---
 
   $("#tweet-text").on('input', function() {
-    
     const $textLength = ($(this).val().length);
     const counter = $(this).closest('form').find('.footer .counter');
     const $currentCounter = 140-$textLength;

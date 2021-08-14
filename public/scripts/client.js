@@ -5,30 +5,12 @@
  */
 
 // Test / driver code (temporary). Eventually will get this from the server.
-const $errorHTML = `
-<div class="delete">
-<div class="error">
-<h2>Too Long, text limit exceeded 140 characters </h2>
-</div>
-</div>
-`
-const $shortError = `
-<div class="delete">
-<div class="error">
-<h2>Please type something</h2>
-</div>
-</div>
-`
-
-
 
 
 $(document).ready(function() {
   $('.error').hide();
-  const $errorMessage = $('.error h2')
 
   $("form").submit(function(event) {
-    $('.delete').html('');
     $('.error').hide();
     event.preventDefault();
     const data = $(this).serialize();
@@ -36,28 +18,22 @@ $(document).ready(function() {
     $errorContainer = $('.error')
 
     if (textLength === 0) {
-      $errorContainer.text('hsdhskdhaskjhdkjs');
-     // $('.new-tweet-header').append($shortError);
+      $errorContainer.text('Please Type Something');
       $('.error').slideDown('slow'); 
-      
-      // $('.new-tweet-header').slideDown( "slow", function() {
-      //   // Animation complete.
-        
-      // });
       return;
     }
 
     if (textLength > 140) {
       $errorContainer.text('Please type less than 140 character');
       $('.error').slideDown('slow'); 
-     // $('.new-tweet-header').append($errorHTML);
       return;
     }
     
     $.ajax('/tweets', { method: "POST" , data})
     .then(function () {
       $loadTweets();
-      $('.delete').html('');
+      $('#tweet-text').val('');
+      $('#tweet-text').closest('form').find('.footer .counter').html(140);
     })
     .catch(error => {
       console.log('error......',error)
@@ -65,7 +41,7 @@ $(document).ready(function() {
   });
 
   const $loadTweets = function() {
-    //alert("loading tweets");
+
     $.ajax('/tweets', { method: 'GET' })
       .then(function (tweetData) {
       $('.posted-tweet').html('');
@@ -117,7 +93,6 @@ const renderTweets = function(tweets) {
   // takes return value and appends it to the tweets container
   for (const item of tweets) { 
     const $tweet = createTweetElement(item);
-      //prepend
-      $('.posted-tweet').append($tweet); // to add it to the page so we can make sure it's got all the right elements, classes, etc.
+    $('.posted-tweet').append($tweet); // to add it to the page so we can make sure it's got all the right elements, classes, etc.
   }
 }
